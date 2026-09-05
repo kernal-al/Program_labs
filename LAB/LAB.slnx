@@ -3,7 +3,8 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="LAB/LAB.vcxproj" Id="93ac56c4-c52c-460f-8e67-4a22f6a173ca" />
+  <Project Path="LAB_2_1/LAB.vcxproj" Id="93ac56c4-c52c-460f-8e67-4a22f6a173ca" />
   <Project Path="LAB_2_2/LAB_2_2.vcxproj" Id="16c4a0f6-f436-4132-a2c3-a81bbc4850fc" />
   <Project Path="LAB_2_3/LAB_2_3.vcxproj" Id="0f9a147e-5448-4104-a3f0-de1f9e4fa71f" />
+  <Project Path="LAB_2_4/LAB_2_4.vcxproj" Id="8b9c007b-f6b3-4fa3-a57a-3cb8955684ab" />
 </Solution>
