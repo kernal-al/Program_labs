@@ -1,0 +1,4 @@
+﻿  LAB_2_3.cpp
+D:\cpp_project\LAB\LAB_2_3\LAB_2_3.cpp(6,42): warning C4293: '<<': отрицательное или слишком большое значение счетчика сдвигов, неопределенное поведение
+D:\cpp_project\LAB\LAB_2_3\LAB_2_3.cpp(7,14): warning C4244: инициализация: преобразование "unsigned __int64" в "double", возможна потеря данных
+  LAB_2_3.vcxproj -> D:\cpp_project\LAB\x64\Debug\LAB_2_3.exe
