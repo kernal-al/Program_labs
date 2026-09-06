@@ -9,4 +9,3 @@ int main()
 	std::cout << "Лет потребуется:" << (int)years;
 	return 0;
 }
-
