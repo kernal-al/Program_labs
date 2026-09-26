@@ -1,32 +1,49 @@
-﻿#include <iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include <clocale>
+#include <cmath>
+
 int main()
 {
-    setlocale(LC_ALL, "RU");
+	setlocale(LC_ALL, "RU");
+	int n;
+	printf("Введите число N: ");
+	scanf("%d", &n);
 
-    int n;
-    std::cout << "Введите число N: ";
-    if (!(std::cin >> n)) return 0;
+	int bestDiff = n + 1, bestP = 0, bestQ = 0;
+	// Два указателя: P растёт, подходящее Q только убывает,
+	// поэтому корень берём один раз, а дальше лишь уменьшаем q.
+	int q = (int)sqrt((double)n);
+	for (int p = 1; ; ++p)
+	{
+		int pp = p * p;
+		// q — наибольшее число >= p, при котором p² + q² <= n
+		while (q >= p && pp + q * q > n)
+			--q;
 
-    int min_diff = INT_MAX;
-    int best_p = 0;
-    int best_q = 0;
+		if (q < p)
+		{
+			// Даже при Q = P сумма больше n, дальше будет только хуже
+			int d = pp + pp - n;
+			if (d < bestDiff || (d == bestDiff && p < bestQ))
+			{
+				bestDiff = d; bestP = p; bestQ = p;
+			}
+			break;
+		}
 
-    for (int p = 1; p * p <= n; ++p) {
-        int q = std::round(std::sqrt(n - p * p));
-        if (q < p) q = p;
-        for (int curr_q = q; curr_q <= q + 1; ++curr_q) {
-            if (p > curr_q) continue;
+		int d = n - pp - q * q;              // недолёт, >= 0
+		if (d < bestDiff || (d == bestDiff && q < bestQ))
+		{
+			bestDiff = d; bestP = p; bestQ = q;
+		}
+		d = pp + (q + 1) * (q + 1) - n;      // перелёт, > 0
+		if (d < bestDiff || (d == bestDiff && q + 1 < bestQ))
+		{
+			bestDiff = d; bestP = p; bestQ = q + 1;
+		}
+	}
 
-            int current_diff = std::abs(n - p * p - curr_q * curr_q);
-
-            if (current_diff < min_diff || (current_diff == min_diff && curr_q < best_q)) {
-                min_diff = current_diff;
-                best_p = p;
-                best_q = curr_q;
-            }
-        }
-    }
-    std::cout << "Результат P и Q: " << best_p << " " << best_q << std::endl;
-
-    return 0;
+	printf("P = %d, Q = %d\n", bestP, bestQ);
+	return 0;
 }

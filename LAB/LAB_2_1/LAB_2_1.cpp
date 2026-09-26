@@ -1,17 +1,23 @@
-﻿#define _USE_MATH_DEFINES
-#include <iostream>
-#include <math.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#define _USE_MATH_DEFINES
+#include <cstdio>
+#include <clocale>
+#include <cmath>
+
 int main()
 {
 	setlocale(LC_ALL, "RU");
-	short rad = 2;
-	float rad_lenght = 2 * M_PI * rad;
-	float rad_s = M_PI * std::pow(rad, 2);
-	float V = 4 / 3. * rad_s * rad;
-	float pov = 4 * rad_s;
-	printf("Длина окружности: %.2f\n", rad_lenght);
-	printf("Площадь круга: %.2f\n", rad_s);
-	printf("Объём шара: %.2f\n", V);
-	printf("Площадь поверхности шара: %.2f\n", pov);
-}
+	double r;
+	printf("Введите радиус: ");
+	scanf("%lf", &r);
 
+	double pr = M_PI * r;      // πr — общая часть всех формул, считаем один раз
+	double S = pr * r;         // πr²
+	double sphere = 4 * S;     // 4πr²
+
+	printf("Длина окружности: %.2f\n", pr + pr);
+	printf("Площадь круга: %.2f\n", S);
+	printf("Площадь поверхности сферы: %.2f\n", sphere);
+	printf("Объём шара: %.2f\n", sphere * r / 3);   // 4/3·πr³ = 4πr²·r/3
+	return 0;
+}

@@ -1,50 +1,40 @@
-﻿#include <iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include <clocale>
+
 int main()
 {
 	setlocale(LC_ALL, "RU");
-	int money;
-	std::cout << "Введите количество денег(с копейками): " ;
-	std::cin >> money;
-	int rubles = money / 100;
-	int kopecks = money % 100;
+	int t;
+	printf("Введите сумму в копейках (46 р. 47 к. = 4647): ");
+	scanf("%d", &t);
 
-	int max_money = money;
-	int best_step = 0;
+	// Для некоторых сумм проходы зацикливаются (например, с 30 копеек),
+	// поэтому запоминаем уже встречавшиеся суммы. После обмена сумма < 10000,
+	// так что хватает массива на 10000 флагов.
+	static bool seen[10000];
 
-	int curr_rub = rubles;
-	int curr_kop = kopecks;
-
-	for (int step = 1; step <= 10000; ++step)
+	int best = t, bestStep = 0;
+	// Храним сумму одним числом в копейках: рубли = t / 100, копейки = t % 100.
+	// "Разменять рубль" при нехватке копеек делает само вычитание.
+	for (int step = 1; t >= 29; ++step)
 	{
-		if (curr_rub == 0 && curr_kop < 29)
+		t -= 29;
+		t = t % 100 * 100 + t / 100;   // рубли <-> копейки
+		if (t < 10000)
 		{
-			break;
+			if (seen[t])               // пошли по кругу — больше ничего нового не будет
+				break;
+			seen[t] = true;
 		}
-
-		if (curr_kop >= 29)
+		if (t > best)                  // строго больше: при равенстве раньше лучше
 		{
-			curr_kop -= 29;
-		}
-		else
-		{
-			curr_rub -= 1;
-			curr_kop += 71;
-		}
-
-		std::swap(curr_rub, curr_kop);
-
-		int curr_total = curr_rub * 100 + curr_kop;
-
-		if (curr_total > max_money)
-		{
-			max_money = curr_total;
-			best_step = step;
+			best = t;
+			bestStep = step;
 		}
 	}
 
-	std::cout << "Наибольшая конечная сумма: " << max_money << std::endl;
-	std::cout << "Оптимальное число проходов: " << best_step << std::endl;
-
+	printf("Наибольшая сумма: %d р. %02d к.\n", best / 100, best % 100);
+	printf("Оптимальное число проходов: %d\n", bestStep);
 	return 0;
-
 }
