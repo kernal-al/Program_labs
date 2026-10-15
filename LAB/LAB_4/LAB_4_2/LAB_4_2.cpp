@@ -1,5 +1,6 @@
 ﻿#include <math.h>
-#include <iostream>
+#include <stdio.h>
+#include <locale.h>
 
 int main()
 {
@@ -11,9 +12,25 @@ int main()
         printf("Введите целое число M > 1: ");
         scanf("%d", &M);
     } while (M <= 1);
-    for (; pow(4,k+1) < M; ++k)
+
+    for (; pow(4, k + 1) < M; ++k)
     {
     }
-    printf("наибольшее число %d", k);    
+    printf("for: %d\n", k);
+
+    k = 0;
+    while (pow(4, k + 1) < M)
+    {
+        k += 1;
+    }
+    printf("while: %d\n", k);
+
+    k = 0;
+    do
+    {
+        k += 1;
+    } while (pow(4, k) < M);
+    printf("do-while: %d\n", k - 1);
+
     return 0;
 }
