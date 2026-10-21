@@ -6,8 +6,14 @@ int main()
 {
     srand(time(NULL));
     setlocale(LC_ALL, "RU");
-    int a[1000];
-    int N = 1000;
+    const int MAX_N = 1000;
+    int a[MAX_N];
+    int N;
+    do
+    {
+        printf("Введите количество элементов массива (1..%d): ", MAX_N);
+        scanf("%d", &N);
+    } while (N < 1 || N > MAX_N);
     int count = 0;
     int sum = 0;
     int i = 0;
