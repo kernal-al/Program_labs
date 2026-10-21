@@ -8,15 +8,12 @@ int main()
     setlocale(LC_ALL, "RU");
     int a[1000];
     int N = 1000;
-    for (int j = 0; j < N; j++)
-    {
-        a[j] = rand() % 14 - 5;
-    }
     int count = 0;
     int sum = 0;
     int i = 0;
     for (; i < N && count < 2; i++)
     {
+        a[i] = rand() % 14 - 5;
         if (a[i] > 0)
         {
             count += 1;
