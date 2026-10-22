@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 
@@ -26,6 +27,12 @@ int main()
         }
         if (count > 0) sum += a[i];
     }
+    printf("Массив (%d из %d элементов):", i, N);
+    for (int j = 0; j < i; j++)
+    {
+        printf(" %d", a[j]);
+    }
+    printf("\n");
     if (count < 2)
     {
         printf("for: недостаточно положительных элементов\n");
