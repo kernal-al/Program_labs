@@ -1,6 +1,5 @@
 ﻿#include <math.h>
-#include <stdio.h>
-#include <locale.h>
+#include <iostream>
 
 int main()
 {
@@ -21,14 +20,14 @@ int main()
     k = 0;
     while (pow(4, k + 1) < M)
     {
-        k += 1;
+        ++k;
     }
     printf("while: %d\n", k);
 
     k = 0;
     do
     {
-        k += 1;
+        ++k;
     } while (pow(4, k) < M);
     printf("do-while: %d\n", k - 1);
 
