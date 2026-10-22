@@ -1,4 +1,5 @@
-﻿#include <math.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <math.h>
 #include <iostream>
 
 int main()
@@ -9,7 +10,7 @@ int main()
     do
     {
         printf("Введите целое число M > 1: ");
-        scanf_s("%d", &M);
+        scanf("%d", &M);
     } while (M <= 1);
 
     for (; pow(4, k + 1) < M; ++k)

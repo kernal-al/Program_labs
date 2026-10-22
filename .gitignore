@@ -13,3 +13,7 @@ Release/
 *.ipch
 *.tlog
 *.log
+
+# Linux: собранные программы (g++ -o lab_X-Y)
+lab_*-*
+!*.cpp
