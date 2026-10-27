@@ -1,5 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
+﻿#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 
@@ -18,17 +17,21 @@ int main()
     int count = 0;
     int sum = 0;
     int i = 0;
-    for (; i < N && count < 2; i++)
+    for (; i < N; i++)
     {
         a[i] = rand() % 14 - 5;
+    }
+    i = 0;
+    for (; i < N && count < 2; i++)
+    {
         if (a[i] > 0)
         {
-            count += 1;
+            ++count;
         }
         if (count > 0) sum += a[i];
     }
-    printf("Массив (%d из %d элементов):", i, N);
-    for (int j = 0; j < i; j++)
+    printf("Массив (из %d элементов):", N);
+    for (int j = 0; j < N; j++)
     {
         printf(" %d", a[j]);
     }
@@ -45,10 +48,10 @@ int main()
     {
         if (a[i] > 0)
         {
-            count += 1;
+            ++count;
         }
         if (count > 0) sum += a[i];
-        i += 1;
+        ++i;
     }
     printf("Сумма от 1 положительного элемента в массиве до 2 (while) = %d\n", sum);
 
@@ -57,10 +60,10 @@ int main()
     {
         if (a[i] > 0)
         {
-            count += 1;
+            ++count;
         }
         if (count > 0) sum += a[i];
-        i += 1;
+        ++i;
     } while (i < N && count < 2);
     printf("Сумма от 1 положительного элемента в массиве до 2 (do-while) = %d", sum);
     return 0;
